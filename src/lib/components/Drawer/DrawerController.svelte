@@ -26,7 +26,8 @@
 
 	// updated by team v.11.0
 	let newNode: any;
-	//Add getelementById para buscar el lienzo despues al componente lienzo vamos a add un event listener on:Drop(newNode) para agregar neweNode a graphStore.
+	//Add getelementById to search the canvas then to the canvas component we are going to add an event listener on:Drop(newNode) to add neweNode to graphStore.
+	let currentNode: HTMLElement | null = null;
 	const handleDragStart = (e: DragEvent) => {
 		if (!e.dataTransfer) return;
 		e.dataTransfer.dropEffect = 'move';
@@ -36,7 +37,7 @@
 		const edgeCreated = createEdgeProps();
 
 		//createNodeProps(edgeCreated, anchorProps);
-		newNode = createNodeProps(edgeCreated, anchorProps);
+		newNode = createNodeProps(0,0,edgeCreated, anchorProps);
 		//console.log("Node desde DrawerController", newNode);
 		e.dataTransfer.setData('application/json', JSON.stringify(newNode));
 	};
@@ -275,7 +276,7 @@
 					on:dragstart={(e) => {
 						const target = e.target;
 						if (target instanceof HTMLElement) {
-							handleNodeDragStart(e, target);
+							handleNodeDragStart(e, target, 'defaultNode');
 						}
 					}}
 				>
