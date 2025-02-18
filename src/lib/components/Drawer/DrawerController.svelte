@@ -8,6 +8,8 @@
 	import { createEdgeProps } from './DrawerEdge.svelte';
 	import Icon from '$lib/assets/icons/Icon.svelte';
 	import { onMount, onDestroy } from 'svelte';
+	import { getSnappedPosition } from '$lib/utils/snapGrid';
+
 
 	let isOpen = false;
 	let nodeContainerOpen = false;
