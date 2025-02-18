@@ -44,6 +44,8 @@
 	// Creates props and adds to customNodePropsStore if an anchor was created, defaultNodePropsStore if not
 	// Updated by team v.11.0 to test the store is being propertly updated
 	export const createNodeProps = (
+		x: number,
+		y: number,
 		edgeProps?: EdgeDrawerConfig,
 		anchorProps?: { [key: string]: AnchorDrawerConfig[] }
 	): any => {
