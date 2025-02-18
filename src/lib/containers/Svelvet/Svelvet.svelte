@@ -134,12 +134,13 @@
 	onMount(() => {
 		console.log('Graph component mounted with drawer:', drawer);
 		const stateObject = localStorage.getItem('state');
-		console.log('stateObject during onMount:', stateObject); // Aqui esta confirmado que localStorage.getItem('state') esta trayendo el grafico "PERFECTAMENTE BIEN" desde el localStorage
+		console.log('stateObject during onMount:', stateObject); // Here it is confirmed that localStorage.getItem('state') is bringing the graph "PERFECTLY OK" from localStorage
 		if (stateObject) {
 			graph = reloadStore(stateObject);
-			console.log('Este es el graph seteado mediante reloadStore(stateObject)', graph);
-			graphStore.add(graph, graph.id); //ERRROR: graphStore no se esta actuaklzando
-			console.log('graphStore actualizado', graph);
+			console.log('This is the graph set using reloadStore', graph);
+			graphStore.add(graph, graph.id); //ERROR: graphStore is not updating
+
+			console.log('graphStore updated', graph);
 		} else {
 			let graphKey: GraphKey = `G-${id || graphStore.count() + 1}`;
 			graph = createGraph(graphKey, { zoom, direction, editable, locked, translation });
@@ -174,6 +175,8 @@
 		source: [string | number, string | number],
 		target: [string | number, string | number]
 	) {
+		if (!graph) return;  // Early exit if graph is null
+
 		const sourceNodeKey: NodeKey = `N-${source[0]}`;
 		const sourceNode = graph.nodes.get(sourceNodeKey);
 		if (!sourceNode) return;
@@ -189,8 +192,8 @@
 		graph.edges.delete(edgeKey[0]);
 	}
 </script>
-
-<!-- Aqui se renderiza el grafico -->
+<!-- Here the graph is rendered -->
+		
 {#if graph}
 	<Graph
 		{width}

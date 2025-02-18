@@ -37,7 +37,7 @@
 		const edgeCreated = createEdgeProps();
 
 		//createNodeProps(edgeCreated, anchorProps);
-		newNode = createNodeProps(0,0,edgeCreated, anchorProps);
+		newNode = createNodeProps(0, 0, edgeCreated, anchorProps);
 		//console.log("Node desde DrawerController", newNode);
 		e.dataTransfer.setData('application/json', JSON.stringify(newNode));
 	};
