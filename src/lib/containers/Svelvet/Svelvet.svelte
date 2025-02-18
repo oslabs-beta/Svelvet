@@ -15,7 +15,7 @@
 	} from '$lib/types';
 	import type { NodeConfig, GraphKey, CSSColorString, NodeKey } from '$lib/types';
 	import type { Node, Anchor } from '$lib/types';
-	import Drawer from '$lib/components/Drawer/Drawer.svelte';
+	// import Drawer from '$lib/components/Drawer/Drawer.svelte';
 </script>
 
 <script lang="ts">
@@ -46,7 +46,7 @@
 	export let minimap = false;
 	export let controls = false;
 	export let toggle = false;
-	export let drawer: boolean = false;
+	export let drawer = false;
 	export let contrast = false;
 
 	// $: console.log("Svelvet drawer prop:", drawer);
@@ -175,7 +175,7 @@
 		source: [string | number, string | number],
 		target: [string | number, string | number]
 	) {
-		if (!graph) return;  // Early exit if graph is null
+		if (!graph) return; // Early exit if graph is null
 
 		const sourceNodeKey: NodeKey = `N-${source[0]}`;
 		const sourceNode = graph.nodes.get(sourceNodeKey);
@@ -192,8 +192,9 @@
 		graph.edges.delete(edgeKey[0]);
 	}
 </script>
+
 <!-- Here the graph is rendered -->
-		
+
 {#if graph}
 	<Graph
 		{width}
