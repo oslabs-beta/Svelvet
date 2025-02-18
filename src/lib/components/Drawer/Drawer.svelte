@@ -268,8 +268,8 @@ const svelvetProps: SvelvetConfig = {
 	// Suscripción reactiva al store
 	let defaultNodes = $defaultNodePropsStore;
 	let dropped_in: boolean;
-  
-  	// Drag and drop events
+
+	// Drag and drop events
 	const handleDragEnter = (): void => {
 		if (!dropped_in) dropped_in = true;
 	};
@@ -295,7 +295,7 @@ const svelvetProps: SvelvetConfig = {
 		const target = e.target as HTMLElement;
 		target.dispatchEvent(moveEvent);
 	};
-  </script>
+</script>
 
 <div
 	role="presentation"
@@ -374,7 +374,7 @@ const svelvetProps: SvelvetConfig = {
 		<slot name="toggle" slot="toggle" />
 	</Svelvet>
 </div>
-       
+
 <style>
 	/* Styles for the drop zone to make it visually distinct */
 	.drop_zone {
@@ -384,5 +384,3 @@ const svelvetProps: SvelvetConfig = {
 		position: relative;
 	}
 </style>
-
-

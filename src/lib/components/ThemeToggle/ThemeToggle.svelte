@@ -57,11 +57,11 @@
 		// Aquí es donde restauras los nodos cuando la aplicación se monta
 		const savedGraphState = localStorage.getItem('state');
 		if (savedGraphState) {
-			console.log("Al renderizar la aplicacion este componente se ejecuta en este orden")
+			console.log('Al renderizar la aplicacion este componente se ejecuta en este orden');
 			const parsedGraphState = JSON.parse(savedGraphState);
 			if (parsedGraphState && parsedGraphState.nodes) {
 				const graph = get(graphStore);
-				console.log(graph)
+				console.log(graph);
 				graph.set('G-1', parsedGraphState);
 				console.log('Restaurando nodos:', parsedGraphState.nodes);
 			}

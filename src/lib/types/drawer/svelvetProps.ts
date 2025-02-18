@@ -24,5 +24,5 @@ export interface SvelvetConfig {
 	trackpadPan: boolean;
 	toggle: boolean;
 	/** ✅ Add this line **/
-    drawer?: boolean;
+	drawer?: boolean;
 }

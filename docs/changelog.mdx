@@ -18,18 +18,16 @@ description: 'New features, bug fixes, and improvements organized by release'
 
   - Save-button-The saveStore and reloadStore were updated to improve canvas state capture, now saving complete node information (including positions and properties) for more accurate reconstruction. However, reloadStore still needs work to properly render nodes and rebuild the graph after a reload, requiring focus on better graph store integration in future development.
 
-
 - Refactoring:
+
   - We have recreated the Svelvet canvas by removing the default nodes.
   - Edges can now be created and connected to nodes.
   - Accesibility Enhancement by Svelvet 10 are mantained with the exception of 1; "Press `Option + Tab || Ctrl + Tab` for Node selection".
   - In the main Svelvet canvas various issues were addressed, including ensuring graph initialization with local storage, tracking the drawer prop, improving edge management, and handling zoom/translation behavior more consistently. Specific fixes were made to event dispatching, edge removal, and ensuring reactivity for properties like zoom and drawer.
 
-
 - Documentation:
   - We created an individual ReadMe folder detailing our journey with Svelvet, our approach to this new technology, our trials, errors and our effortless attempts and contributions to Svelvet.
   - Improved directions on how to navigate updating Documentation using Mintlify in original README.
-
 
 ## February 7, 2024
 

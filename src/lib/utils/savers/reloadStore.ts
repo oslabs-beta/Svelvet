@@ -67,26 +67,23 @@ import type { Graph } from '$lib/types/graph';
 
 //--------------------------------------------------breaking down reloadStore to focus on transform prop--------------------------------------------------
 
-
 // updated by team v.11.0
 export function reloadStore(store: string): Graph {
 	// Parse the JSON string back into an object
 	const object = JSON.parse(store);
 	// console.log('RECONSTRUCTED GRAPH:', object);
 	const graph = createGraph(object.id, {
-        ...object, // 🔥 Esto asegurará que pasamos TODAS las propiedades del objeto
-        editable: object.editable,
-        direction: object.direction,
-        locked: object.locked,
-        zoom: object.transforms?.scale ?? 1,
-        translation: object.transforms?.translation ?? { x: 0, y: 0 },
-        edge: object.edge
-    });
+		...object, // 🔥 Esto asegurará que pasamos TODAS las propiedades del objeto
+		editable: object.editable,
+		direction: object.direction,
+		locked: object.locked,
+		zoom: object.transforms?.scale ?? 1,
+		translation: object.transforms?.translation ?? { x: 0, y: 0 },
+		edge: object.edge
+	});
 
 	// No need to call `.set` on `transforms.scale` and `transforms.translation` if they're initialized directly within `createGraph`
 	// eslint-disable-next-line no-console
 	// console.log('reconstructed graph:', graph);
 	return graph;
 }
-
-

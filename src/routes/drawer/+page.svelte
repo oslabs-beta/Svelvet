@@ -328,7 +328,7 @@
 </script>
 
 <div
-role="presentation"
+	role="presentation"
 	id="drop_zone"
 	on:dragenter={handleDragEnter}
 	on:dragleave={handleDragLeave}

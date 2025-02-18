@@ -1,4 +1,4 @@
-<div align="center"> 
+<div align="center">
 
 ![banner](https://i.imgur.com/pNIYDWO.png)
 
@@ -37,9 +37,8 @@ Shout out to our contributors! We appreciate your continous efforts. Here's what
 
   -Save-button-The saveStore and reloadStore were updated to improve canvas state capture, now saving complete node information (including positions and properties) for more accurate reconstruction. However, reloadStore still needs work to properly render nodes and rebuild the graph after a reload, requiring focus on better graph store integration in future development.
 
-
-
 - **Refactoring**:
+
   - We have recreated the Svelvet canvas by removing the default nodes.
   - We added an "Add Node" button that allows for the creation of nodes with default anchors.
   - Edges can now be created and connected to nodes.

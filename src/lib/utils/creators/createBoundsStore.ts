@@ -63,9 +63,9 @@ export function createBoundsStore(
 		for (const node of nodes.getAll()) {
 			console.log('dentro del for, este es e node:', node);
 			//ESTAS PROPIEDADES DEBEN CONSERVARSE DE TIPO STORE PORQUE OTROS COMPONENTES DEPENDEN DE ESTAS PROPIEDAES
-			const { x, y } = get(node.position); 
-			const width = get(node.dimensions.width); 
-			const height = get(node.dimensions.height); 
+			const { x, y } = get(node.position);
+			const width = get(node.dimensions.width);
+			const height = get(node.dimensions.height);
 			// const { x, y } = node.position;
 			// const width = node.dimensions.width;
 			// const height = node.dimensions.height;

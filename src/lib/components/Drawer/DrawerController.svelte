@@ -23,7 +23,7 @@
 	let anchorContainer: HTMLElement;
 	let edgeContainer: HTMLElement;
 
-// updated by team v.11.0
+	// updated by team v.11.0
 	let newNode: any;
 	//Add getelementById para buscar el lienzo despues al componente lienzo vamos a add un event listener on:Drop(newNode) para agregar neweNode a graphStore.
 	const handleDragStart = (e: DragEvent) => {

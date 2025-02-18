@@ -1,5 +1,4 @@
 <script context="module" lang="ts">
-	
 	import Graph from '../Graph/Graph.svelte';
 	import FlowChart from '$lib/components/FlowChart/FlowChart.svelte';
 	import { createEventDispatcher, onMount, setContext } from 'svelte';
@@ -20,7 +19,6 @@
 </script>
 
 <script lang="ts">
-	
 	// Props
 	export let mermaid = '';
 	/**
@@ -34,9 +32,6 @@
 	export let id: number | string = 0;
 	export let snapTo = 0;
 
-	
-   
-	
 	/**
 	 * @default 1
 	 * @description Sets initial zoom level of the graph. This value
@@ -192,15 +187,12 @@
 		const edgeKey = graph.edges.match(sourceAnchor, targetAnchor);
 		if (!edgeKey) return;
 		graph.edges.delete(edgeKey[0]);
-		
 	}
-	
 </script>
 
 <!-- Aqui se renderiza el grafico -->
 {#if graph}
 	<Graph
-	
 		{width}
 		{height}
 		{toggle}
@@ -231,7 +223,6 @@
 		<slot name="toggle" slot="toggle" />
 		<slot name="drawer" slot="drawer" />
 		<slot name="contrast" slot="contrast" />
-		
 	</Graph>
 {:else}
 	<div

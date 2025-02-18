@@ -1,5 +1,5 @@
 <script lang="ts">
-	console.log("Componente GraphRenderer.svelte")
+	console.log('Componente GraphRenderer.svelte');
 	import GroupBoxRenderer from '$lib/renderers/GroupBoxRenderer/GroupBoxRenderer.svelte';
 	import ZoomPanWrapper from '$lib/containers/ZoomPanWrapper/ZoomPanWrapper.svelte';
 	import { initialClickPosition, tracking } from '$lib/stores/CursorStore'; //these are like stores that track cursor position and whether an element is being dragged or moved
