@@ -45,6 +45,9 @@
 	export let drawer = false;
 	export let contrast = false;
 
+	// Log drawer prop initially
+	console.log('Initial Graph drawer prop:', drawer);
+
 	let animationFrameId: number;
 
 	// creates a dispatch function using Svelte's createEventDispatcher. This function is used to dispatch custom events from the component. For example, if the component needs to notify parent components of certain actions or changes, dispatch can be used to emit these events.
@@ -112,6 +115,9 @@
 	//load the contrast options
 	$: if (contrast && !contrastComponent) loadContrast();
 
+	// Log drawer prop when it changes
+	$: console.log('Reactive Graph drawer prop:', drawer);
+
 	// This is a temporary workaround for generating an edge where one of the anchors is the cursor
 	const cursorAnchor: CursorAnchor = {
 		id: null,
@@ -153,6 +159,7 @@
 
 	// Lifecycle methods
 	onMount(() => {
+		console.log('Graph component mounted with drawer1:', drawer); // Add this line
 		updateGraphDimensions();
 	});
 
@@ -531,6 +538,7 @@
 		);
 
 		// Apply transforms
+		//
 		scale.set(newScale);
 		translation.set(newTranslation);
 	}
@@ -597,6 +605,24 @@
 	// // new definitions for Radio Group test
 	// let options = ['option 1', 'option 2', 'option 3'];
 	// let parameterStore = writable('default value');
+
+	// // updated by team v.11.0
+	// function handleDragOver(event: DragEvent) {
+	// 	// Prevenir el comportamiento predeterminado para permitir el drop
+	// 	event.preventDefault();
+	// }
+
+	// function handleDrop(event: DragEvent) {
+	// 	// Manejar la lógica de lo que sucede cuando un elemento es soltado
+	// 	event.preventDefault();
+	// 	const jsonNodeFromDrawerController = event.dataTransfer?.getData('application/json');
+
+	// 	if (jsonNodeFromDrawerController) {
+	// 		// if true
+	// 		const newNode = JSON.parse(jsonNodeFromDrawerController);
+	// 		console.log('Elemento soltado:', newNode);
+	// 	}
+	// }
 </script>
 
 <!-- <button on:click={() => getJSONState(graph)}>SAVE STATE</button> -->

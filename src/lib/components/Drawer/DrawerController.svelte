@@ -1,4 +1,5 @@
 <script lang="ts">
+	//  console.log('Drawer mounted from drawer contrller')
 	import DrawerNode from './DrawerNode.svelte';
 	import DrawerAnchor from './DrawerAnchor.svelte';
 	import DrawerEdge from './DrawerEdge.svelte';
@@ -9,6 +10,8 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { getSnappedPosition } from '$lib/utils/snapGrid';
 	
+
+
 	let isOpen = false;
 	let nodeContainerOpen = false;
 	let edgeContainerOpen = false;
@@ -22,38 +25,23 @@
 	let nodeContainer: HTMLElement;
 	let anchorContainer: HTMLElement;
 	let edgeContainer: HTMLElement;
-	let currentNode: HTMLElement | null = null;
 
-	console.log('📌 DrawerController Loaded!');
+// updated by team v.11.0
+	let newNode: any;
+	//Add getelementById para buscar el lienzo despues al componente lienzo vamos a add un event listener on:Drop(newNode) para agregar neweNode a graphStore.
+	const handleDragStart = (e: DragEvent) => {
+		if (!e.dataTransfer) return;
+		e.dataTransfer.dropEffect = 'move';
 
-	// const handleNodeDragStart = (
-	// 	e: DragEvent & { target: EventTarget | null },
-	// 	node: HTMLElement
-	// ) => {
-	// 	// const handleDragStart = (e: DragEvent) => {
-	// 	if (!e.dataTransfer) return;
-	// 	console.log('Dragging Node:', node.id);
+		// Create props for anchor or edge if values were given
+		const anchorProps = createAnchorProps(true);
+		const edgeCreated = createEdgeProps();
 
-	// 	e.dataTransfer.dropEffect = 'move';
-	// 	e.dataTransfer.setData('text/plain', node.id);
-
-	// 	// Store the current node being dragged
-	// 	currentNode = node;
-	// 	// Store the initial offset relative to the mouse position\
-	// 	offsetX = e.clientX - node.offsetLeft;
-	// 	offsetY = e.clientY - node.offsetTop;
-
-	// 	node.style.position = 'absolute';
-	// 	// Add event listeners to track movement only while dragging
-	// 	document.addEventListener('mousemove', handleDragMove);
-	// 	document.addEventListener('mouseup', handleDragEnd);
-
-	// 	// Create props for anchor or edge if values were given
-	// 	const anchorProps = createAnchorProps(true);
-	// 	const edgeCreated = createEdgeProps();
-	// 	// Create props for node
-	// 	createNodeProps(edgeCreated, anchorProps);
-	// };
+		//createNodeProps(edgeCreated, anchorProps);
+		newNode = createNodeProps(edgeCreated, anchorProps);
+		//console.log("Node desde DrawerController", newNode);
+		e.dataTransfer.setData('application/json', JSON.stringify(newNode));
+	};
 
 	const handleDrawer = () => {
 		if (!isOpen) {
@@ -122,6 +110,7 @@
 
 	let currentComponent = 'Node'; // Add this line
 
+	//This function open the side panel when we click on "D" key
 	const handleKeyPress = (e: KeyboardEvent) => {
 		if (e.key === 'D') {
 			handleDrawer();
@@ -139,6 +128,7 @@
 			}
 		}
 	};
+
 	let offsetX = 0;
 	let offsetY = 0;
 
